@@ -1,8 +1,24 @@
 version: '3.4'
 
 services:
+  postgres:
+    container_name: postgres
+    image: postgres:latest
+    environment:
+      - POSTGRES_PASSWORD=postgrespw
+    ports:
+      - 5432:5432
+    volumes:
+      - data:/var/lib/postgresql
   shoppinglist.items.api:
     image: ${DOCKER_REGISTRY-}shoppinglistitemsapi
     build:
       context: .
       dockerfile: ShoppingList.Items.Api/Dockerfile
+    ports:
+      - 8080:80
+      - 8081:443
+    environment:
+      - ConnectionStrings__PgSql=Host=postgres;Port=5432;Database=items_db;Username=postgres;Password=postgrespw
+volumes:
+  data:

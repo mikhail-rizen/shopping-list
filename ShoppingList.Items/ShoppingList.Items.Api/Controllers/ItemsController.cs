@@ -27,6 +27,7 @@ namespace ShoppingList.Items.Api.Controllers
         {
             Item item = new Item { Id = Guid.NewGuid(), Name = name };
             await itemsContext.AddAsync(item);
+            await itemsContext.SaveChangesAsync();
             return Ok();
         }
     }

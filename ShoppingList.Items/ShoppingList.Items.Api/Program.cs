@@ -12,10 +12,16 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<ItemsContext>(options =>
 {
-    options.UseNpgsql(builder.Configuration.GetConnectionString("pgSql"));
+    options.UseNpgsql(builder.Configuration.GetConnectionString("pgSql"), options => options.MigrationsAssembly("ShoppingList.Items.Api"));
 });
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<ItemsContext>();
+    db.Database.Migrate();
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
