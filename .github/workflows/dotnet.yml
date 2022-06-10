@@ -18,8 +18,8 @@ jobs:
       with:
         dotnet-version: 6.0.x
     - name: Restore dependencies
-      run: dotnet restore ShoppingList.Items/
+      run: dotnet restore ShoppingList.Items/ShoppingList.Items.sln
     - name: Build
-      run: dotnet build --no-restore  ShoppingList.Items/
+      run: dotnet build --no-restore  ShoppingList.Items/ShoppingList.Items.sln
     - name: Test
-      run: dotnet test --no-build --verbosity normal  ShoppingList.Items/
+      run: dotnet test --no-build --verbosity normal  ShoppingList.Items/ShoppingList.Items.sln
