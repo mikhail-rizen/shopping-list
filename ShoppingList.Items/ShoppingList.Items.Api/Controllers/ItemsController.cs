@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using ShoppingList.Items.Data.Database;
 using ShoppingList.Items.Data.Entities;
+using ShoppingList.Items.Data.Repository;
 
 namespace ShoppingList.Items.Api.Controllers
 {
@@ -9,25 +8,24 @@ namespace ShoppingList.Items.Api.Controllers
     [Route("api/[controller]")]
     public class ItemsController : ControllerBase
     {
-        private readonly ItemsContext itemsContext;
+        private readonly ItemsRepository itemsRepository;
 
-        public ItemsController(ItemsContext itemsContext)
+        public ItemsController(ItemsRepository itemsRepository)
         {
-            this.itemsContext = itemsContext;
+            this.itemsRepository = itemsRepository;
         }
 
         [HttpGet]
         public async Task<IEnumerable<Item>> Get()
         {
-            return await itemsContext.Items.ToListAsync();
+            return await itemsRepository.GetAllAsync();
         }
 
         [HttpPost]
         public async Task<IActionResult> Post(string name)
         {
             Item item = new Item { Id = Guid.NewGuid(), Name = name };
-            await itemsContext.AddAsync(item);
-            await itemsContext.SaveChangesAsync();
+            await itemsRepository.AddAsync(item);
             return Ok();
         }
     }

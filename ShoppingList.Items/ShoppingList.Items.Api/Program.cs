@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using ShoppingList.Items.Data.Database;
+using ShoppingList.Items.Data.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +15,8 @@ builder.Services.AddDbContext<ItemsContext>(options =>
 {
     options.UseNpgsql(builder.Configuration.GetConnectionString("pgSql"), options => options.MigrationsAssembly("ShoppingList.Items.Api"));
 });
+
+builder.Services.AddTransient<ItemsRepository>();
 
 var app = builder.Build();
 
