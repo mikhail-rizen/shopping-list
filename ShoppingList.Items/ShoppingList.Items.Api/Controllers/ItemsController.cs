@@ -1,4 +1,6 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using ShoppingList.Items.Api.Models;
 using ShoppingList.Items.Data.Entities;
 using ShoppingList.Items.Data.Repository;
 
@@ -8,24 +10,25 @@ namespace ShoppingList.Items.Api.Controllers
     [Route("api/[controller]")]
     public class ItemsController : ControllerBase
     {
-        private readonly ItemsRepository itemsRepository;
+        private readonly IItemsRepository itemsRepository;
+        private readonly IMapper mapper;
 
-        public ItemsController(ItemsRepository itemsRepository)
+        public ItemsController(IItemsRepository itemsRepository, IMapper mapper)
         {
             this.itemsRepository = itemsRepository;
+            this.mapper = mapper;
         }
 
         [HttpGet]
-        public async Task<IEnumerable<Item>> Get()
+        public async Task<IEnumerable<ItemModel>> Get()
         {
-            return await itemsRepository.GetAllAsync();
+            return mapper.Map<IEnumerable<ItemModel>>(await itemsRepository.GetAllAsync());
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post(string name)
+        public async Task<IActionResult> Post(CreateItemModel createItemModel)
         {
-            Item item = new Item { Id = Guid.NewGuid(), Name = name };
-            await itemsRepository.AddAsync(item);
+            await itemsRepository.AddAsync(mapper.Map<Item>(createItemModel));
             return Ok();
         }
     }
