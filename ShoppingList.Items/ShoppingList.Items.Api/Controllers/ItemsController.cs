@@ -10,10 +10,10 @@ namespace ShoppingList.Items.Api.Controllers
     [Route("api/[controller]")]
     public class ItemsController : ControllerBase
     {
-        private readonly ItemsRepository itemsRepository;
+        private readonly IItemsRepository itemsRepository;
         private readonly IMapper mapper;
 
-        public ItemsController(ItemsRepository itemsRepository, IMapper mapper)
+        public ItemsController(IItemsRepository itemsRepository, IMapper mapper)
         {
             this.itemsRepository = itemsRepository;
             this.mapper = mapper;

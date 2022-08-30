@@ -4,7 +4,7 @@ using ShoppingList.Items.Data.Entities;
 
 namespace ShoppingList.Items.Data.Repository
 {
-    public class ItemsRepository : Repository<Item>
+    public class ItemsRepository : Repository<Item>, IItemsRepository
     {
         private readonly ItemsContext itemsContext;
         private readonly ILogger<ItemsRepository> logger;

@@ -6,7 +6,7 @@ namespace ShoppingList.Items.Api
     {
         public static void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<ItemsRepository>();
+            services.AddTransient<IItemsRepository, ItemsRepository>();
             services.AddAutoMapper(typeof(ServiceConfiguration));
         }
     }
