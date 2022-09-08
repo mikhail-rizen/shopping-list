@@ -1,4 +1,6 @@
 ﻿using ShoppingList.Items.Data.Repository;
+using MediatR;
+using ShoppingList.Items.Service.Query;
 
 namespace ShoppingList.Items.Api
 {
@@ -8,6 +10,7 @@ namespace ShoppingList.Items.Api
         {
             services.AddTransient<IItemsRepository, ItemsRepository>();
             services.AddAutoMapper(typeof(ServiceConfiguration));
+            services.AddMediatR(typeof(GetAllItemsQuery).Assembly);
         }
     }
 }
