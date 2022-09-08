@@ -16,7 +16,7 @@ builder.Services.AddDbContext<ItemsContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("pgSql"), options => options.MigrationsAssembly("ShoppingList.Items.Api"));
 });
 
-ServiceConfiguration.ConfigureServices(builder.Services);
+ServiceConfiguration.ConfigureServices(builder.Services, builder.Configuration);
 
 var app = builder.Build();
 
