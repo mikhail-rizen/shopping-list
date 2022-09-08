@@ -28,7 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\ShoppingList.Items\ShoppingList.Items.Api\ShoppingList.Items.Api.csproj" />
+    <ProjectReference Include="..\..\ShoppingList.Items.Api\ShoppingList.Items.Api.csproj" />
   </ItemGroup>
 
 </Project>
