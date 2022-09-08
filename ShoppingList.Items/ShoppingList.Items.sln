@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{C9DAEF33
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShoppingList.Items.Api.Test", "Tests\ShoppingList.Items.Api.Test\ShoppingList.Items.Api.Test.csproj", "{0A7670BA-C614-405D-AFDD-9E4A9EDF0CF4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingList.Items.Service", "ShoppingList.Items.Service\ShoppingList.Items.Service.csproj", "{757E21C9-3E1A-43ED-B56C-D6367FE2067C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,10 @@ Global
 		{0A7670BA-C614-405D-AFDD-9E4A9EDF0CF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A7670BA-C614-405D-AFDD-9E4A9EDF0CF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A7670BA-C614-405D-AFDD-9E4A9EDF0CF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{757E21C9-3E1A-43ED-B56C-D6367FE2067C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{757E21C9-3E1A-43ED-B56C-D6367FE2067C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{757E21C9-3E1A-43ED-B56C-D6367FE2067C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{757E21C9-3E1A-43ED-B56C-D6367FE2067C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
