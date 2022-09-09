@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using ShoppingList.Items.Data.Entities;
 using ShoppingList.Items.Data.Repository;
 using ShoppingList.Items.Messaging.Configuration;
 using ShoppingList.Items.Messaging.Receive;
@@ -12,11 +13,13 @@ namespace ShoppingList.Items.Api
     {
         public static void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
-            services.AddTransient<IItemsRepository, ItemsRepository>();
+            services.AddScoped<IItemsRepository, ItemsRepository>();
             services.AddAutoMapper(typeof(ServiceConfiguration));
             services.AddMediatR(typeof(GetAllItemsQuery).Assembly);
 
-            services.AddSingleton<ISyncItemService, SyncItemService>();
+            services.AddScoped<ISyncItemService, SyncItemService>();
+
+            //services.AddTransient<IRequestHandler<GetItemByIdQuery, Item?>, GetItemByIdQueryHandler>();
 
             //messaging
             var serviceClientSettingsConfig = configuration.GetSection("RabbitMq");
