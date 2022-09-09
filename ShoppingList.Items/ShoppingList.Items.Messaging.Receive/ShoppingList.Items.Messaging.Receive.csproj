@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\shopping-list\ShoppingList.Items\ShoppingList.Items.Service\ShoppingList.Items.Service.csproj" />
+    <ProjectReference Include="..\ShoppingList.Items.Service\ShoppingList.Items.Service.csproj" />
     <ProjectReference Include="..\ShoppingList.Items.Messaging\ShoppingList.Items.Messaging.csproj" />
   </ItemGroup>
 

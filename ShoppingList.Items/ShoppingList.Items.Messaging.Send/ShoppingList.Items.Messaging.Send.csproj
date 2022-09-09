@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\shopping-list\ShoppingList.Items\ShoppingList.Items.Data\ShoppingList.Items.Data.csproj" />
+    <ProjectReference Include="..\ShoppingList.Items.Data\ShoppingList.Items.Data.csproj" />
     <ProjectReference Include="..\ShoppingList.Items.Messaging\ShoppingList.Items.Messaging.csproj" />
   </ItemGroup>
 
