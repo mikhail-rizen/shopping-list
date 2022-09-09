@@ -24,6 +24,10 @@ services:
     build:
       context: .
       dockerfile: ShoppingList.Items.Api/Dockerfile
+    depends_on:
+      - rabbitmq
+      - postgres
+    restart: on-failure
     ports:
       - 8080:80
       - 8081:443
