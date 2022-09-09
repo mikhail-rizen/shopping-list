@@ -4,10 +4,8 @@ using ShoppingList.Items.Data.Database;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -16,7 +14,7 @@ builder.Services.AddDbContext<ItemsContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("pgSql"), options => options.MigrationsAssembly("ShoppingList.Items.Api"));
 });
 
-ServiceConfiguration.ConfigureServices(builder.Services);
+ServiceConfiguration.ConfigureServices(builder.Services, builder.Configuration);
 
 var app = builder.Build();
 

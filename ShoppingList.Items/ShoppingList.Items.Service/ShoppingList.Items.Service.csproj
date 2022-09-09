@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ShoppingList.Items.Data\ShoppingList.Items.Data.csproj" />
+    <ProjectReference Include="..\ShoppingList.Items.Messaging.Send\ShoppingList.Items.Messaging.Send.csproj" />
   </ItemGroup>
 
 </Project>

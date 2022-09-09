@@ -25,6 +25,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ShoppingList.Items.Data\ShoppingList.Items.Data.csproj" />
+    <ProjectReference Include="..\ShoppingList.Items.Messaging.Receive\ShoppingList.Items.Messaging.Receive.csproj" />
+    <ProjectReference Include="..\ShoppingList.Items.Messaging.Send\ShoppingList.Items.Messaging.Send.csproj" />
+    <ProjectReference Include="..\ShoppingList.Items.Messaging\ShoppingList.Items.Messaging.csproj" />
     <ProjectReference Include="..\ShoppingList.Items.Service\ShoppingList.Items.Service.csproj" />
   </ItemGroup>
 
