@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using RabbitMQ.Client;
-using ShoppingList.Items.Data.Entities;
+using ShoppingList.Items.Entities;
 using ShoppingList.Items.Messaging.Configuration;
 using System.Text;
 

@@ -1,4 +1,4 @@
-﻿namespace ShoppingList.Items.Data.Entities
+﻿namespace ShoppingList.Items.Entities
 {
     public class Item
     {

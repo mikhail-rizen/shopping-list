@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using ShoppingList.Items.Data.Database;
-using ShoppingList.Items.Data.Entities;
+using ShoppingList.Items.Entities;
 
 namespace ShoppingList.Items.Data.Repository
 {

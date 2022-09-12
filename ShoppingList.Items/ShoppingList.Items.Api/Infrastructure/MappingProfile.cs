@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using ShoppingList.Items.Api.Models;
-using ShoppingList.Items.Data.Entities;
+using ShoppingList.Items.Entities;
 
 namespace ShoppingList.Items.Api.Infrastructure
 {

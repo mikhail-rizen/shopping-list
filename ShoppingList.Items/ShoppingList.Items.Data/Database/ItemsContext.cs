@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using ShoppingList.Items.Data.Entities;
+using ShoppingList.Items.Entities;
 
 namespace ShoppingList.Items.Data.Database
 {
