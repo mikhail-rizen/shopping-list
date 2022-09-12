@@ -10,6 +10,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="11.0.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+    <PackageReference Include="MediatR" Version="10.0.1" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.5">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -21,6 +25,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ShoppingList.Items.Data\ShoppingList.Items.Data.csproj" />
+    <ProjectReference Include="..\ShoppingList.Items.Messaging.Receive\ShoppingList.Items.Messaging.Receive.csproj" />
+    <ProjectReference Include="..\ShoppingList.Items.Messaging.Send\ShoppingList.Items.Messaging.Send.csproj" />
+    <ProjectReference Include="..\ShoppingList.Items.Messaging\ShoppingList.Items.Messaging.csproj" />
+    <ProjectReference Include="..\ShoppingList.Items.Service\ShoppingList.Items.Service.csproj" />
   </ItemGroup>
 
 </Project>

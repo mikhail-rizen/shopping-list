@@ -7,11 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="6.0.5" />
+    <PackageReference Include="MediatR" Version="10.0.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ShoppingList.Items.Entities\ShoppingList.Items.Entities.csproj" />
+    <ProjectReference Include="..\ShoppingList.Items.Data\ShoppingList.Items.Data.csproj" />
+    <ProjectReference Include="..\ShoppingList.Items.Messaging.Send\ShoppingList.Items.Messaging.Send.csproj" />
   </ItemGroup>
 
 </Project>

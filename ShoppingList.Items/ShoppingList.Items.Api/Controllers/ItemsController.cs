@@ -1,7 +1,10 @@
+using AutoMapper;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using ShoppingList.Items.Data.Database;
-using ShoppingList.Items.Data.Entities;
+using ShoppingList.Items.Api.Models;
+using ShoppingList.Items.Entities;
+using ShoppingList.Items.Service.Command;
+using ShoppingList.Items.Service.Query;
 
 namespace ShoppingList.Items.Api.Controllers
 {
@@ -9,26 +12,32 @@ namespace ShoppingList.Items.Api.Controllers
     [Route("api/[controller]")]
     public class ItemsController : ControllerBase
     {
-        private readonly ItemsContext itemsContext;
+        private readonly IMediator mediator;
+        private readonly IMapper mapper;
 
-        public ItemsController(ItemsContext itemsContext)
+        public ItemsController(IMediator mediator, IMapper mapper)
         {
-            this.itemsContext = itemsContext;
+            this.mediator = mediator;
+            this.mapper = mapper;
         }
 
         [HttpGet]
-        public async Task<IEnumerable<Item>> Get()
+        public async Task<IEnumerable<ItemModel>> Get(CancellationToken cancellationToken)
         {
-            return await itemsContext.Items.ToListAsync();
+            return mapper.Map<IEnumerable<ItemModel>>(await mediator.Send(new GetAllItemsQuery(), cancellationToken));
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ItemModel> GetById(Guid id, CancellationToken cancellationToken)
+        {
+            return mapper.Map<ItemModel>(await mediator.Send(new GetItemByIdQuery { Id = id }, cancellationToken));
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post(string name)
+        public async Task<ActionResult<ItemModel>> Post(CreateItemModel createItemModel, CancellationToken cancellationToken)
         {
-            Item item = new Item { Id = Guid.NewGuid(), Name = name };
-            await itemsContext.AddAsync(item);
-            await itemsContext.SaveChangesAsync();
-            return Ok();
+            Item item = await mediator.Send(new CreateItemCommand { Item = mapper.Map<Item>(createItemModel) }, cancellationToken);
+            return Ok(mapper.Map<ItemModel>(item));
         }
     }
 }

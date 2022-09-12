@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ShoppingList.Items.Data.Entities;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using ShoppingList.Items.Entities;
 
 namespace ShoppingList.Items.Data.Database
 {
@@ -14,7 +15,8 @@ namespace ShoppingList.Items.Data.Database
         {
             modelBuilder.HasDefaultSchema("Items");
 
-            modelBuilder.Entity<Item>();
+            EntityTypeBuilder<Item> itemBuilder = modelBuilder.Entity<Item>();
+            itemBuilder.Property(item => item.Name).HasMaxLength(200);
         }
 
         public DbSet<Item> Items { get; set; } = null!;
