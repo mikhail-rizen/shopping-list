@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using ShoppingList.Items.Data.Entities;
 using ShoppingList.Items.Data.Repository;
 using ShoppingList.Items.Messaging.Configuration;
 using ShoppingList.Items.Messaging.Receive;

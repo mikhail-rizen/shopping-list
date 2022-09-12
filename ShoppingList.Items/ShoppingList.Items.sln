@@ -23,6 +23,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShoppingList.Items.Messagin
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShoppingList.Items.Messaging.Send", "ShoppingList.Items.Messaging.Send\ShoppingList.Items.Messaging.Send.csproj", "{B8F07567-A6C2-46D4-A3C1-E194BCCD23DE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingList.Items.Entities", "ShoppingList.Items.Entities\ShoppingList.Items.Entities.csproj", "{DFEAEE62-C7B3-421B-B26C-5648C5EEE7AE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,10 @@ Global
 		{B8F07567-A6C2-46D4-A3C1-E194BCCD23DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8F07567-A6C2-46D4-A3C1-E194BCCD23DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B8F07567-A6C2-46D4-A3C1-E194BCCD23DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFEAEE62-C7B3-421B-B26C-5648C5EEE7AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFEAEE62-C7B3-421B-B26C-5648C5EEE7AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFEAEE62-C7B3-421B-B26C-5648C5EEE7AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFEAEE62-C7B3-421B-B26C-5648C5EEE7AE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

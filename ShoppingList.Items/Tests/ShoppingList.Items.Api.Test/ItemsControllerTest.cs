@@ -1,7 +1,7 @@
 using MediatR;
 using ShoppingList.Items.Api.Controllers;
 using ShoppingList.Items.Api.Test.Infrastructure;
-using ShoppingList.Items.Data.Entities;
+using ShoppingList.Items.Entities;
 using ShoppingList.Items.Service.Query;
 
 namespace ShoppingList.Items.Api.Test

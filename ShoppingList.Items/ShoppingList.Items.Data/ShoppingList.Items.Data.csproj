@@ -10,4 +10,8 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="6.0.5" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ShoppingList.Items.Entities\ShoppingList.Items.Entities.csproj" />
+  </ItemGroup>
+
 </Project>

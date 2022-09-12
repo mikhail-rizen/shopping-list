@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using ShoppingList.Items.Data.Entities;
+using ShoppingList.Items.Entities;
 using ShoppingList.Items.Service.Command;
 using ShoppingList.Items.Service.Model;
 using ShoppingList.Items.Service.Query;

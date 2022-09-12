@@ -2,7 +2,7 @@ using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using ShoppingList.Items.Api.Models;
-using ShoppingList.Items.Data.Entities;
+using ShoppingList.Items.Entities;
 using ShoppingList.Items.Service.Command;
 using ShoppingList.Items.Service.Query;
 
