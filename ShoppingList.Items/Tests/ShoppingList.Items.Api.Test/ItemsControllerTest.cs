@@ -1,4 +1,5 @@
 using MediatR;
+using Microsoft.Extensions.Logging;
 using ShoppingList.Items.Api.Controllers;
 using ShoppingList.Items.Api.Test.Infrastructure;
 using ShoppingList.Items.Entities;
@@ -12,6 +13,8 @@ namespace ShoppingList.Items.Api.Test
 
         public ItemsControllerTest()
         {
+            ILogger<ItemsController> logger = A.Fake<ILogger<ItemsController>>();
+
             IMediator mediator = A.Fake<IMediator>();
             A.CallTo(() => mediator.Send(A<GetItemByIdQuery>._, A<CancellationToken>._)).Returns(new Item
             {
@@ -28,7 +31,7 @@ namespace ShoppingList.Items.Api.Test
                 }
             }));
 
-            controller = new ItemsController(mediator, mapper);
+            controller = new ItemsController(mediator, mapper, logger);
         }
 
         [Fact]
