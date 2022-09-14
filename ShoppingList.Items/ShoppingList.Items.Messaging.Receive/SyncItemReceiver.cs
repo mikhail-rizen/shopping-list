@@ -17,6 +17,7 @@ namespace ShoppingList.Items.Messaging.Receive
         private IConnection? connection;
         private readonly string? hostname;
         private readonly string? queueName;
+        private readonly string? exchangeName;
         private readonly string? username;
         private readonly string? password;
         private readonly IServiceProvider serviceProvider;
@@ -25,6 +26,7 @@ namespace ShoppingList.Items.Messaging.Receive
         {
             hostname = rabbitMqOptions.Value.Hostname;
             queueName = rabbitMqOptions.Value.QueueName;
+            exchangeName = rabbitMqOptions.Value.ExchangeName;
             username = rabbitMqOptions.Value.UserName;
             password = rabbitMqOptions.Value.Password;
             InitializeRabbitMqListener();
@@ -44,7 +46,9 @@ namespace ShoppingList.Items.Messaging.Receive
             connection = factory.CreateConnection();
             connection.ConnectionShutdown += RabbitMQ_ConnectionShutdown!;
             channel = connection.CreateModel();
+            channel.ExchangeDeclare(exchange: exchangeName, type: ExchangeType.Fanout, durable: false, autoDelete: false, arguments: null);
             channel.QueueDeclare(queue: queueName, durable: false, exclusive: false, autoDelete: false, arguments: null);
+            channel.QueueBind(queueName, exchangeName, string.Empty, null);
         }
 
         #region async implementation
