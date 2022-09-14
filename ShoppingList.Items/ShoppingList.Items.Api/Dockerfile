@@ -9,6 +9,7 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["ShoppingList.Items.Api/ShoppingList.Items.Api.csproj", "ShoppingList.Items.Api/"]
 COPY ["ShoppingList.Items.Data/ShoppingList.Items.Data.csproj", "ShoppingList.Items.Data/"]
+COPY ["ShoppingList.Items.Entities/ShoppingList.Items.Entities.csproj", "ShoppingList.Items.Entities/"]
 COPY ["ShoppingList.Items.Messaging.Receive/ShoppingList.Items.Messaging.Receive.csproj", "ShoppingList.Items.Messaging.Receive/"]
 COPY ["ShoppingList.Items.Service/ShoppingList.Items.Service.csproj", "ShoppingList.Items.Service/"]
 COPY ["ShoppingList.Items.Messaging.Send/ShoppingList.Items.Messaging.Send.csproj", "ShoppingList.Items.Messaging.Send/"]
