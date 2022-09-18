@@ -1,6 +1,7 @@
 name: .NET publish
 
-#on:
+on:
+    workflow_dispatch:
 #  push:
 #  pull_request:
 #    branches: [ "main" ]
