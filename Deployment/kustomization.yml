@@ -1,0 +1,7 @@
+resources:
+  - deployment-postgres.yml
+  - deployment-pgadmin.yml
+  - deployment-rabbitmq.yml
+  - deployment-elastic.yml
+  - deployment-kibana.yml
+  - deployment-shoppinglist-items.yml

@@ -1,0 +1,70 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: elastic
+  labels:
+    app: shoppinglist
+spec:
+  ports:
+    - port: 9200
+  selector:
+    app: shoppinglist
+    tier: elastic
+  type: LoadBalancer
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: elastic-pv-claim
+  labels:
+    app: shoppinglist
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100M
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: elastic-deployment
+  labels:
+    app: shoppinglist
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: shoppinglist
+      tier: elastic
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: shoppinglist
+        tier: elastic
+    spec:
+      containers:
+      - name: elastic
+        image: elasticsearch:7.17.5
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: xpack.monitoring.enabled
+          value: "true"
+        - name: xpack.watcher.enabled
+          value: "false"
+        - name: ES_JAVA_OPTS
+          value: "-Xms512m -Xmx512m"
+        - name: discovery.type
+          value: "single-node"
+        ports:
+        - containerPort: 9200
+        resources:
+        volumeMounts:
+        - name: elastic-persistent-storage
+          mountPath: /usr/share/elasticsearch/data
+      volumes:
+      - name: elastic-persistent-storage
+        persistentVolumeClaim:
+          claimName: elastic-pv-claim

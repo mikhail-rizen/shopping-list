@@ -1,0 +1,44 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kibana
+  labels:
+    app: shoppinglist
+spec:
+  ports:
+    - port: 5601
+  selector:
+    app: shoppinglist
+    tier: kibana
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kibana-deployment
+  labels:
+    app: shoppinglist
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: shoppinglist
+      tier: kibana
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: shoppinglist
+        tier: kibana
+    spec:
+      containers:
+      - name: kibana
+        image: kibana:7.17.5
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 5601
+        env:
+        - name: ELASTICSEARCH_HOSTS
+          value: "http://elastic:9200"
+        resources:
