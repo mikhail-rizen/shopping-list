@@ -23,7 +23,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShoppingList.Items.Messagin
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShoppingList.Items.Messaging.Send", "ShoppingList.Items.Messaging.Send\ShoppingList.Items.Messaging.Send.csproj", "{B8F07567-A6C2-46D4-A3C1-E194BCCD23DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingList.Items.Entities", "ShoppingList.Items.Entities\ShoppingList.Items.Entities.csproj", "{DFEAEE62-C7B3-421B-B26C-5648C5EEE7AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShoppingList.Items.Entities", "ShoppingList.Items.Entities\ShoppingList.Items.Entities.csproj", "{DFEAEE62-C7B3-421B-B26C-5648C5EEE7AE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Deployment", "Deployment", "{7BE0D455-B83E-43D9-A2CA-E919BAAAEB7A}"
+	ProjectSection(SolutionItems) = preProject
+		deployment.yml = deployment.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

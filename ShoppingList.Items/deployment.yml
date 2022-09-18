@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: shoppinglistitemsapi
+  name: shoppinglistitemsapi
+  namespace: sample
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: shoppinglistitemsapi
+  template:
+    metadata:
+      labels:
+        run: shoppinglistitemsapi
+    spec:
+      containers:
+      - name: shoppinglistitemsapi
+        image: shoppinglistitemsapi
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
