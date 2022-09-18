@@ -1,0 +1,48 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: shoppinglist-items
+  labels:
+    app: shoppinglist
+spec:
+  ports:
+    - port: 8080
+      targetPort: 80
+  selector:
+    app: shoppinglist
+    tier: api
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shoppinglist-items-deployment
+  labels:
+    app: shoppinglist
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: shoppinglist
+      tier: api
+  template:
+    metadata:
+      labels:
+        app: shoppinglist
+        tier: api
+    spec:
+      containers:
+      - name: shoppinglistitems
+        image: mikhailrizen/shoppinglist-items:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+        env:
+        - name: ConnectionStrings__PgSql
+          value: Host=shoppinglist-postgres;Port=5432;Database=items_db;Username=postgres;Password=postgrespw
+        - name: Elastic__Url
+          value: http://elastic:9200
+        - name: RabbitMq__Hostname
+          value: "shoppinglist-rabbitmq"
+        resources:
+
