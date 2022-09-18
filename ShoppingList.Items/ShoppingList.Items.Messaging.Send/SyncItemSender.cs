@@ -11,13 +11,13 @@ namespace ShoppingList.Items.Messaging.Send
     {
         private readonly string? hostname;
         private readonly string? password;
-        private readonly string? queueName;
+        private readonly string? exchangeName;
         private readonly string? username;
         private IConnection? connection;
 
         public SyncItemSender(IOptions<RabbitMqConfiguration> rabbitMqOptions)
         {
-            queueName = rabbitMqOptions.Value.QueueName;
+            exchangeName = rabbitMqOptions.Value.ExchangeName;
             hostname = rabbitMqOptions.Value.Hostname;
             username = rabbitMqOptions.Value.UserName;
             password = rabbitMqOptions.Value.Password;
@@ -35,12 +35,13 @@ namespace ShoppingList.Items.Messaging.Send
             {
                 using (var channel = connection!.CreateModel())
                 {
-                    channel.QueueDeclare(queue: queueName, durable: false, exclusive: false, autoDelete: false, arguments: null);
+                    //channel.QueueDeclare(queue: queueName, durable: false, exclusive: false, autoDelete: false, arguments: null);
+                    channel.ExchangeDeclare(exchange: exchangeName, type: ExchangeType.Fanout, durable: false, autoDelete: false, arguments: null);
 
                     var json = JsonConvert.SerializeObject(item);
                     var body = Encoding.UTF8.GetBytes(json);
 
-                    channel.BasicPublish(exchange: "", routingKey: queueName, basicProperties: null, body: body);
+                    channel.BasicPublish(exchange: exchangeName, routingKey: "", basicProperties: null, body: body);
                 }
             }
         }

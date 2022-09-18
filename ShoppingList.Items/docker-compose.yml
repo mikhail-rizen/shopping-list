@@ -1,6 +1,31 @@
 version: '3.4'
 
 services:
+  elasticsearch:
+    container_name: es-container
+    image: elasticsearch:7.17.5
+    volumes:  
+      - elasticsearch-data:/usr/share/elasticsearch/data
+    environment:  
+        - xpack.monitoring.enabled=true  
+        - xpack.watcher.enabled=false  
+        - "ES_JAVA_OPTS=-Xms512m -Xmx512m"  
+        - discovery.type=single-node 
+    ports:
+      - 9200:9200
+    networks:  
+      - items
+  kibana:
+    container_name: kb-container
+    image: kibana:7.17.5
+    environment:
+      - ELASTICSEARCH_HOSTS=http://es-container:9200
+    depends_on:
+      - elasticsearch
+    ports:
+      - 5601:5601
+    networks:  
+      - items
   postgres:
     container_name: postgres
     image: postgres:latest
@@ -8,6 +33,8 @@ services:
       - POSTGRES_PASSWORD=postgrespw
     ports:
       - 5432:5432
+    networks:  
+      - items
     volumes:
       - data:/var/lib/postgresql
   pgadmin:
@@ -18,7 +45,9 @@ services:
         PGADMIN_DEFAULT_PASSWORD: Qwerty_1
         PGADMIN_LISTEN_PORT: 80
     ports:
-        - "5050:80"
+      - "5050:80"
+    networks:  
+      - items
     volumes:
         - pgadmin-data:/var/lib/pgadmin
   rabbitmq:
@@ -26,6 +55,8 @@ services:
     ports:
         - 5672:5672
         - 15672:15672
+    networks:  
+      - items
     environment:
         - RABBITMQ_DEFAULT_USER=user
         - RABBITMQ_DEFAULT_PASS=password        
@@ -38,12 +69,20 @@ services:
     depends_on:
       - rabbitmq
       - postgres
+      - elasticsearch
     restart: on-failure
     ports:
       - 8080:80
       - 8081:443
+    networks:  
+      - items
     environment:
       - ConnectionStrings__PgSql=Host=postgres;Port=5432;Database=items_db;Username=postgres;Password=postgrespw
+      - Elastic__Url=http://es-container:9200
 volumes:
   data:
   pgadmin-data:
+  elasticsearch-data:
+networks:  
+  items:  
+    driver: bridge
