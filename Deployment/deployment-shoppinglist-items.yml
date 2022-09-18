@@ -34,7 +34,8 @@ spec:
       containers:
       - name: shoppinglistitems
         image: mikhailrizen/shoppinglist-items:latest
-        imagePullPolicy: IfNotPresent
+        #imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         ports:
         - containerPort: 80
         env:
